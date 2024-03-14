@@ -58,19 +58,19 @@ The LS021B7DD02 64-Color Memory LCD Evaluation Kit is a evaluation platform main
 
 ## Setting Up the Hardware <a name="setting_up_hardware"></a>
 
-Install the LCD
+**Install the LCD**
 
 <img src = "./docs/Installing_LCD.jpg" width=70%>
 
-Mate the connectors
+**Mate the connectors**
 
 <img src = "./docs/Mate_the_connectors.jpg">
 
-Make sure jumper positions set to HSPI/SPI interface
+**Make sure jumper positions are set to HSPI/SPI interface**
 
 <img src = "./docs/Set_jumpers.jpg">
 
-Connect USB cable
+**Connect USB cable**
 
 <img src = "./docs/Connect_USB_Cable.jpg">
 
@@ -78,13 +78,13 @@ Connect USB cable
 
 ## Preparing Development Environment <a name="prepare_dev_env"></a>
 
-Download and install Code Composer Studio (CCS) from this web site:
+Download and install Code Composer Studio (CCS) from TI's web site:
 
 https://www.ti.com/tool/CCSTUDIO
 
 <img src = "./docs/CCStudio_download.png">
 
-You need to create a myTI account ID with a valid email and password to download the software.
+*You will need to create a myTI account with a valid email and password to download the software.*
 
 Various download options are supported: Windows/MacOS/Linux. In my case, I have selected the Windows single file (offline) installer:
 
@@ -96,11 +96,11 @@ Double click to run ccs_setup_xxxx.exe:
 
 
 
-Accept the default installation directory suggested for simplicity:
+Accept the default installation directory for simplicity:
 
 <img src = "./docs/ccs_default_install_folder.png">
 
-The Code Composer Studio supports all MCU and MPU models of Texas Instruments. We only need one of them. To save time and our hard disk resource, select Custom Installation option, followed by TM4C12x ARM Cortex-M4F core-based MCUs as the component to install.
+The Code Composer Studio supports all MCU and MPU models of Texas Instruments. We only need one of them. To save time and hard disk resources, select Custom Installation option followed by TM4C12x ARM Cortex-M4F core-based MCUs as the component to install.
 
 <img src = "./docs/CCStudio_TM4C12_option.png">
 
@@ -116,7 +116,7 @@ Click **Download > Download options > SW-TM4C-2.2.0.295.exe**.
 
 <img src = "./docs/SW_TM4C_Download.png">
 
-Accept the default installation directory for simplicity:
+Accept the default installation directory.
 
 <img src = "./docs/SW_TM4C_Install_Default_Dir.png">
 
@@ -128,7 +128,7 @@ Launch CCS with a workspace project created at your own convenience. In my case,
 
 ## Download S1D13C00 Software from Epson <a name="epson_sw"></a>
 
-Software package containing the driver source code and demo projects of the S1D13C00 Memory Display Controller is available from this web site:
+Software package containing the driver source code and demo projects of the S1D13C00 Memory Display Controller is available from Epson's web site at
 
 https://vdc.epson.com/display-controllers/mdc/s1d13c00.
 
@@ -136,15 +136,15 @@ Scrolling down the page you will see a link to download an exe file [S1D13C00 Pe
 
 <img src = "./docs/S1D13C00_download_link.png">
 
-Double click the exe file to install the software package.
+Double click to install the software package.
 
 <img src = "./docs/S1D13C00_pack_install.png">
 
-Accept the default installation directory C:/EPSON for simplicity (you may choose any location convenient to you).
+Accept the default installation directory C:/EPSON.
 
 <img src = "./docs/S1D13C00_default_install_dir.png">
 
-Now you have everything to develop an application for LS021B7DD0x + S1D13C00.
+Now you have everything to develop an application for LS021B7DD0x + S1D13C00 combo.
 
 <img src = "./docs/S1D13C00_folder_structure.png">
 
@@ -152,47 +152,47 @@ Now you have everything to develop an application for LS021B7DD0x + S1D13C00.
 
 Follow the procedures below to import and run the first project on LS021B7DD02 64-Color Memory LCD Evaluation Kit.
 
-Step 1: Launch Code Composer Studio
+**Step 1:** Launch Code Composer Studio
 
-Step 2: Import an example from the Epson folder you have just extracted in previous section. 
+**Step 2:** Import an example from the Epson folder you have just extracted in previous section. 
 
 From **Project > Import CCS Projects**
 
 <img src = "./docs/Import_CCS_Projects.png">
 
-Step 3: Browse to the location of S1D13C00 example folder at **C:\EPSON\S1D13C00_SW\Examples**,  select the **demo2_LS021B7DD01** folder, click **Select Folder** button
+**Step 3:** Browse to the location of S1D13C00 example folder at **C:\EPSON\S1D13C00_SW\Examples**,  select the **demo2_LS021B7DD01** folder, click **Select Folder** button
 
 <img src = "./docs/Select_demo2_LS021B7DD01_folder.png">
 
-Step 4: You will see three options in the next screen. Select EK-TM4C1294XL as the host because it is what we are using. Click Finish.
+**Step 4:** You will see three options in the next screen. Select EK-TM4C1294XL as the host because it is what we are using. Click Finish.
 
 <img src = "./docs/Select_TM4C1294XL.png">
 
-Step 5: You will see a new project under the **Project Explorer**. Right click on the project title and select **Properties**.
+**Step 5:** You will see a new project under the **Project Explorer**. Right click on the project title and select **Properties**.
 
 <img src = "./docs/Select_properties.png">
 
-Step 6: Expand Resource tab, click **Linked Resources**. Create a new Path Variable by clicking the **New** button.
+**Step 6:** Expand Resource tab, click **Linked Resources**. Create a new Path Variable by clicking the **New** button.
 
 <img src = "./docs/Adding_TIVAWARE_Step1.png">
 
-Step 7: Enter TIVAWARE_INSTALL_DIR to the Name textbox. Click the **Folder...** button to add the path location of the TivaWare library > **Select Folder**. 
+**Step 7:** Enter TIVAWARE_INSTALL_DIR to the Name textbox. Click the **Folder...** button to add the path location of the TivaWare library > **Select Folder**. 
 
 <img src = "./docs/Adding_TIVAWARE_Step2.png">
 
-Step 8: You will see the New Variable dialog box look something like this. Click OK to exit. 
+**Step 8:** You will see the New Variable dialog box look something like this. Click OK to exit. 
 
 <img src = "./docs/Adding_TIVAWARE_Step3.png">
 
-Step 9: Now there is a new Path Variable **TIVAWARE_INSTALL_DIR** that points to the path of the Tivaware library. Click **Apply and Close**.
+**Step 9:** Now there is a new Path Variable **TIVAWARE_INSTALL_DIR** that points to the path of the Tivaware library. Click **Apply and Close**.
 
 <img src = "./docs/Adding_TIVAWARE_Step4.png">
 
-Step 10: Build the project to make sure there is no error.
+**Step 10:** Build the project to make sure there is no error.
 
 <img src  = "./docs/Building_the_project.png">
 
-Step 11: For demo2, we need to make a minor modification to the source code. Expand **Src > User**, open main.c and browse to the bottom. Make change to the source code as follows:
+**Step 11:** For demo2, we need to make a minor modification to the source code. Expand **Src > User**, open main.c and browse to the bottom. Make change to the source code as follows:
 
 ```C
      if (pic != prevpic)
@@ -204,7 +204,7 @@ Step 11: For demo2, we need to make a minor modification to the source code. Exp
          seQSPI_ClearMasterRxMMA();
          prevpic = pic;
 
-         printf ("Current image number is %d\n", pic );
+         printf ("Current image number is %d\n", pic ); //this line is optional
         // This snippet doesn't work for some unknown reason(s)
         // Enable MMA mode
         // seQSPI_SetMasterRxMMA( img01_RMADRH, 0xEB );
@@ -218,15 +218,19 @@ The changes are summarised in the screen capture below:
 
 <img src = "./docs/Building_the_project2.png">
 
-Step 12: Click Debug button from the menu bar then Run.
+**Step 12:** Click Debug button from the menu bar then Run.
 
 <img src = "./docs/Debug_and_Run.png">
 
-Step 13: You may browse the photo catalogue by clicking on SW1 on TM4C1294 LaunchPad. You may also test the backlight quality with the ON/OFF switch S100.
+**Step 13:** You may browse the photo catalogue by clicking on **SW1 on TM4C1294 LaunchPad**. 
+
+<img src = "./docs/SW1_switch.jpg" width=70%>
+
+You may also test the backlight quality with the ON/OFF switch S100.
 
 <img src = "./docs/Backlight_on.jpg" width = 70%>
 
-Step 14: Repeat the same procedures above to import more examples. Don't forget to set the Path Variable  of **TIVAWARE_INSTALL_DIR** as that in step 9 for other examples.
+**Step 14:** Repeat the same procedures above to import more examples. Don't forget to set the Path Variable  of **TIVAWARE_INSTALL_DIR** as that in step 9 for other examples.
 
 <img src = "./docs/Importing_all_examples.png">
 
@@ -260,23 +264,23 @@ Features of the tools are summarised below:
 
 Procedures below show you how to send a new binary file to the Serial Flash with [Tera Term](https://github.com/TeraTermProject/teraterm/releases). 
 
-Step 1: Launch Tera Term, select the new COM Port enumerated by TM4C1294 LaunchPad. Click **OK**.
+**Step 1:** Launch Tera Term, select the new COM Port enumerated by TM4C1294 LaunchPad. Click **OK**.
 
 <img src = "./docs/Teraterm_new_connection.png">
 
-Step 2: From **Setup > Serial Port > set Speed to 115200 > click New setting**.
+**Step 2:** From **Setup > Serial Port > set Speed to 115200 > click New setting**.
 
 <img src = "./docs/Teraterm_serial_speed.png">
 
-Step 3: Click the reset button on TM4C1294-EK board, you will see a short manual from Tera Term. Type <Z> from keyboard to erase the Serial Flash. 
+**Step 3:** Click the reset button on TM4C1294-EK board, you will see a short manual from Tera Term. Type Z from keyboard to erase the Serial Flash. 
 
 <img src = "./docs/Teraterm_Z_to_erase.png">
 
-Step 4: After erase complete you will see a prompting message to send data by XModem protocol. 
+**Step 4:** After erase complete you will see a prompting message to send data by XModem protocol. 
 
 <img src = "./docs/Teraterm_Z_erase_complete.png">
 
-Step 5: From **File > Transfer > XMODEM > Send**, browse to the binary file (C:\EPSON\S1D13C00_SW\Examples\demo2_LS021B7DD01\source_images\demo2_serflash.bin) to download. 
+**Step 5:** From **File > Transfer > XMODEM > Send**, browse to the binary file (C:\EPSON\S1D13C00_SW\Examples\demo2_LS021B7DD01\source_images\demo2_serflash.bin) to download. 
 
 <img src = "./docs/Teraterm_Z_to_send_xmodem.png">
 
@@ -290,7 +294,7 @@ Wait until it finishes. Be patient! It takes time.
 
 <img src = "./docs/Teraterm_xmodem_finish.png">
 
-Step 6: When the message *"Flash programmed"* is shown, click reset on TM4C1294 LaunchPad.
+**Step 6:** When the message *"Flash programmed"* is shown, click reset on TM4C1294 LaunchPad.
 
 <img src = "./docs/SW1_switch.jpg" width=70%>
 
