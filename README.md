@@ -226,7 +226,7 @@ The changes are summarised in the screen capture below:
 
 <img src = "./docs/SW1_switch.jpg" width=70%>
 
-You may also test the backlight quality with the ON/OFF switch S100.
+Backlight is also available with an ON/OFF switch S100.
 
 <img src = "./docs/Backlight_on.jpg" width = 70%>
 
