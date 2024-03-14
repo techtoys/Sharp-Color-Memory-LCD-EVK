@@ -306,7 +306,7 @@ LS021B7DD02 is an ultra low power LCD that draws negligible current. There are t
 
 <img src = "./docs/VDD_supply_LS021B7DD02.png">
 
-Test points are available for direct measurement.
+Test points are available for voltage drop measurements.
 
 <img src = "./docs/TestPoints.jpg" width=50%>
 
