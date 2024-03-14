@@ -7,7 +7,7 @@
 5. [Download the S1D13C00 Software from Epson](#epson_sw)
 6. [Importing the Examples](#import_examples)
 
-<img src = "./docs/FrontCover.JPG">
+<img src = "./docs/FrontCover.jpg">
 
 
  ## Introduction <a name="introduction"></a>
@@ -23,7 +23,7 @@ The LS021B7DD02 64-Color Memory LCD Evaluation Kit is a evaluation platform main
    
    * 1 pixel has a RGB each of 2-bit color depth (64 colors)
    
-     <img src = "./docs/LS021B7DD02.JPG" width=50%>
+     <img src = "./docs/LS021B7DD02.jpg" width=50%>
    
 2. S1D13C00 Memory Display Controller manufactured by Epson
    * a graphics controller for memory displays with internal, programmable step-up and charge-pump voltage converter which are typically needed by memory displays
@@ -34,7 +34,7 @@ The LS021B7DD02 64-Color Memory LCD Evaluation Kit is a evaluation platform main
    
    * support flexible MCU interface of 8-bit 8080 mode, SPI, and QSPI
    
-     <img src = "./docs/Epson_S1D13C00.JPG" width = 50%>
+     <img src = "./docs/Epson_S1D13C00.jpg" width = 50%>
 
 ## Board Overview <a name="board_overview"></a>
 
@@ -270,7 +270,7 @@ Wait until it finishes. It takes time.
 
 Finally, click reset on TM4C1294 LaunchPad. Scrolling different images by clicking SW1.
 
-<img src = "./docs/SW1_switch.jpg">
+<img src = "./docs/SW1_switch.jpg" width=70%>
 
 You will see different images on the LCD with demo2 by clicking SW1.
 
