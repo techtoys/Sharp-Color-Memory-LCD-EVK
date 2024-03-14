@@ -3,9 +3,11 @@
 1. [Introduction](#introduction)
 2. [Board Overview](#board_overview)
 3. [Setting Up the Hardware](#setting_up_hardware)
-4. [Prepare the Development Environment](#prepare_dev_env)
-5. [Download the S1D13C00 Software from Epson](#epson_sw)
+4. [Preparing Development Environment](#prepare_dev_env)
+5. [Download S1D13C00 Software from Epson](#epson_sw)
 6. [Importing the Examples](#import_examples)
+7. [Sending New Binary Files to Serial Flash](#bin_files_update)
+8. [Power Consumption and its Measurement ](#power_consumption)
 
 <img src = "./docs/FrontCover.jpg">
 
@@ -41,7 +43,7 @@ The LS021B7DD02 64-Color Memory LCD Evaluation Kit is a evaluation platform main
 <img src = "./docs/BoardOverview.jpg">
 
 1. Molex connector 5035662102 to mate with LS021B7DD02
-2. R132 (100R, 0.1%), R133 (100R, 0.1%), and R122(10R, 0.1%) with test points for VDD1 of LS021B7DD02, VDD2 of LS021B7DD02, and VDD of S1D13C00. Please read schematic in this repository.
+2. R132 (100R, 0.1%), R133 (100R, 0.1%), and R122(10R, 0.1%) with test points for VDD1 of LS021B7DD02, VDD2 of LS021B7DD02, and VDD of S1D13C00. Please read the schematic in this repository for details.
 3. P102 is an interface connector of S1D13C00 to an external microcontroller
 4. Backlight module
 5. On/OFF switch of the backlight module
@@ -74,7 +76,7 @@ Connect USB cable
 
 
 
-## Prepare the Development Environment <a name="prepare_dev_env"></a>
+## Preparing Development Environment <a name="prepare_dev_env"></a>
 
 Download and install Code Composer Studio (CCS) from this web site:
 
@@ -102,7 +104,7 @@ The Code Composer Studio supports all MCU and MPU models of Texas Instruments. W
 
 <img src = "./docs/CCStudio_TM4C12_option.png">
 
-Click few more Next buttons to accept default installation options to continue. When you see Installation Completed message, click OK to reboot your machine.
+Click a few more Next buttons to accept default installation options to continue. When you see the Installation Completed message, click OK to reboot your machine.
 
 <img src = "./docs/CCStudio_install_completed_reboot.png">
 
@@ -124,7 +126,7 @@ Launch CCS with a workspace project created at your own convenience. In my case,
 
 
 
-## Download the S1D13C00 Software from Epson <a name="epson_sw"></a>
+## Download S1D13C00 Software from Epson <a name="epson_sw"></a>
 
 Software package containing the driver source code and demo projects of the S1D13C00 Memory Display Controller is available from this web site:
 
@@ -174,7 +176,7 @@ Step 6: Expand Resource tab, click **Linked Resources**. Create a new Path Varia
 
 <img src = "./docs/Adding_TIVAWARE_Step1.png">
 
-Step 7: Enter TIVAWARE_INSTALL_DIR to the Name textbox. Click **Folder...** button to add the path location of TivaWare library > **Select Folder**. 
+Step 7: Enter TIVAWARE_INSTALL_DIR to the Name textbox. Click the **Folder...** button to add the path location of the TivaWare library > **Select Folder**. 
 
 <img src = "./docs/Adding_TIVAWARE_Step2.png">
 
@@ -182,7 +184,7 @@ Step 8: You will see the New Variable dialog box look something like this. Click
 
 <img src = "./docs/Adding_TIVAWARE_Step3.png">
 
-Step 9: Now there is a new Path Variable **TIVAWARE_INSTALL_DIR** that points to the path of Tivaware library. Click **Apply and Close**.
+Step 9: Now there is a new Path Variable **TIVAWARE_INSTALL_DIR** that points to the path of the Tivaware library. Click **Apply and Close**.
 
 <img src = "./docs/Adding_TIVAWARE_Step4.png">
 
@@ -212,7 +214,7 @@ Step 11: For demo2, we need to make a minor modification to the source code. Exp
      }
 ```
 
-The changes are summarized in the screen capture below:
+The changes are summarised in the screen capture below:
 
 <img src = "./docs/Building_the_project2.png">
 
@@ -220,17 +222,35 @@ Step 12: Click Debug button from the menu bar then Run.
 
 <img src = "./docs/Debug_and_Run.png">
 
-Step 13: You may browse the photo catalog from the Serial Flash by clicking on SW1 on the red board (TM4C1294-EK). Feel free to test the backlight quality.
+Step 13: You may browse the photo catalogue by clicking on SW1 on TM4C1294 LaunchPad. You may also test the backlight quality with the ON/OFF switch S100.
 
 <img src = "./docs/Backlight_on.jpg" width = 70%>
 
-Step 14: Photos on the LCD are stored (ex-factory) in the 128Mbit (16MByte) Serial Flash W25Q128JVSIQTR close to Epson S1D13C00. Image sources are available from the demo2 folder under \source_images.
+Step 14: Repeat the same procedures above to import more examples. Don't forget to set the Path Variable  of **TIVAWARE_INSTALL_DIR** as that in step 9 for other examples.
+
+<img src = "./docs/Importing_all_examples.png">
+
+## Sending New Binary Files to Serial Flash <a name="bin_files_update"></a>
+
+There are two methods to preload some images to the system:
+
+1. in binary format to the external Serial Flash
+
+2. in .h array to Flash space of the host CPU
+
+Method 1 is preferred because it saves precious programming space of the CPU.
+
+<img src = "./docs/Image_storage.png">Images of demo2 are stored ex-factory in the 128Mbit (16MByte) Serial Flash W25Q128JVSIQTR.
+
+<img src = "./docs/W25Q128.png" width=80%>
+
+Image sources are available from the `\source_images` folder.
 
 <img src = "./docs/Binary_file_loc.png">
 
 Epson has released [three tools](https://vdc.epson.com/display-controllers/s1d13c00-peripheral-circuit-sample-software-manual/viewdocument/611) to convert fonts and images to format compatible with S1D13C00.
 
-Features of the tools are summarized below:
+Features of the tools are summarised below:
 
 | Tool                            | Features                                                     |      |
 | ------------------------------- | ------------------------------------------------------------ | ---- |
@@ -238,47 +258,55 @@ Features of the tools are summarized below:
 | MDCImgConv.exe                  | Convert common image formats (BMP, PNG, JPG, ICO, TIF, GIF) to pixel formats supported by S1D13C00. The tool can generate header files (.h), binary files (.mdcimg) or HEX files (.hex). |      |
 | MDCSerFlashImg.exe              | Create a binary image for downloading to the serial flash W25Q128JVSIQTR |      |
 
-Step 15: Use Tera Term to update the Serial Flash with a new binary file. Launch Tera Term, select the new COM Port enumerated. Click OK.
+Procedures below show you how to send a new binary file to the Serial Flash with [Tera Term](https://github.com/TeraTermProject/teraterm/releases). 
+
+Step 1: Launch Tera Term, select the new COM Port enumerated by TM4C1294 LaunchPad. Click **OK**.
 
 <img src = "./docs/Teraterm_new_connection.png">
 
-Step 16: From **Setup > Serial Port > set Speed to 115200 > New setting**.
+Step 2: From **Setup > Serial Port > set Speed to 115200 > click New setting**.
 
 <img src = "./docs/Teraterm_serial_speed.png">
 
-Step 17: By clicking the reset button from TM4C1294-EK board, you will see a short manual from Tera Term. Type <Z> from keyboard to erase the Serial Flash. 
+Step 3: Click the reset button on TM4C1294-EK board, you will see a short manual from Tera Term. Type <Z> from keyboard to erase the Serial Flash. 
 
 <img src = "./docs/Teraterm_Z_to_erase.png">
 
-Step 18: After erase complete you will see a probe to send a binary file by XModem protocol. 
+Step 4: After erase complete you will see a prompting message to send data by XModem protocol. 
 
 <img src = "./docs/Teraterm_Z_erase_complete.png">
 
-From **File > Transfer > XMODEM > Send**, browse to the binary file (C:\EPSON\S1D13C00_SW\Examples\demo2_LS021B7DD01\source_images\demo2_serflash.bin)  to download. 
+Step 5: From **File > Transfer > XMODEM > Send**, browse to the binary file (C:\EPSON\S1D13C00_SW\Examples\demo2_LS021B7DD01\source_images\demo2_serflash.bin) to download. 
 
 <img src = "./docs/Teraterm_Z_to_send_xmodem.png">
 
 <img src = "./docs/Teraterm_Z_to_select_bin.png">
 
-You will see the progress of Xmodem transfer. 
+The progress of Xmodem transfer is shown. 
 
 <img src = "./docs/Teraterm_Z_xmodem_progress.png">
 
-Wait until it finishes. It takes time.
+Wait until it finishes. Be patient! It takes time.
 
 <img src = "./docs/Teraterm_xmodem_finish.png">
 
-Finally, click reset on TM4C1294 LaunchPad. Scrolling different images by clicking SW1.
+Step 6: When the message *"Flash programmed"* is shown, click reset on TM4C1294 LaunchPad.
 
 <img src = "./docs/SW1_switch.jpg" width=70%>
 
-You will see different images on the LCD with demo2 by clicking SW1.
-
 <img src = "./docs/demo2.jpg">
 
-Step 19: Repeat the same procedures above to import more examples. Don't forget to set the Path Variable  of **TIVAWARE_INSTALL_DIR** as that in step 9 for other examples.
+## Power Consumption and its Measurement <a name="power_consumption"></a>
 
-<img src = "./docs/Importing_all_examples.png">
+LS021B7DD02 is an ultra low power LCD that draws negligible current. There are two resistors of 100 Ohm +/-0.1% in the path of power supply with the schematics extracted below.
 
-## Current consumption and its measurement
+<img src = "./docs/VDD_supply_LS021B7DD02.png">
+
+Test points are available for direct measurement.
+
+<img src = "./docs/TestPoints.jpg" width=50%>
+
+Results of measuring voltage drop across VDD1 and VDD2 current path with 100 Ohm resistors are shown below. The voltage drop is not measurable with my multimeter!
+
+<img src = "./docs/VDD1_2_results.jpg" width=50%>
 
