@@ -58,19 +58,19 @@ The LS021B7DD02 64-Color Memory LCD Evaluation Kit is a evaluation platform main
 
 Install the LCD
 
-<img src = "./docs/Installing_LCD.JPG" width=70%>
+<img src = "./docs/Installing_LCD.jpg" width=70%>
 
 Mate the connectors
 
-<img src = "./docs/Mate_the_connectors.JPG">
+<img src = "./docs/Mate_the_connectors.jpg">
 
 Make sure jumper positions set to HSPI/SPI interface
 
-<img src = "./docs/Set_jumpers.JPG">
+<img src = "./docs/Set_jumpers.jpg">
 
 Connect USB cable
 
-<img src = "./docs/Connect_USB_Cable.JPG">
+<img src = "./docs/Connect_USB_Cable.jpg">
 
 
 
@@ -222,7 +222,7 @@ Step 12: Click Debug button from the menu bar then Run.
 
 Step 13: You may browse the photo catalog from the Serial Flash by clicking on SW1 on the red board (TM4C1294-EK). Feel free to test the backlight quality.
 
-<img src = "./docs/Backlight_on.JPG" width = 70%>
+<img src = "./docs/Backlight_on.jpg" width = 70%>
 
 Step 14: Photos on the LCD are stored (ex-factory) in the 128Mbit (16MByte) Serial Flash W25Q128JVSIQTR close to Epson S1D13C00. Image sources are available from the demo2 folder under \source_images.
 
@@ -270,11 +270,11 @@ Wait until it finishes. It takes time.
 
 Finally, click reset on TM4C1294 LaunchPad. Scrolling different images by clicking SW1.
 
-<img src = "./docs/SW1_switch.JPG">
+<img src = "./docs/SW1_switch.jpg">
 
 You will see different images on the LCD with demo2 by clicking SW1.
 
-<img src = "./docs/demo2.JPG">
+<img src = "./docs/demo2.jpg">
 
 Step 19: Repeat the same procedures above to import more examples. Don't forget to set the Path Variable  of **TIVAWARE_INSTALL_DIR** as that in step 9 for other examples.
 
