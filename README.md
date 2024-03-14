@@ -1,9 +1,11 @@
 # LS021B7DD02 64-Color Memory LCD Evaluation Kit
 
-# Table of contents
-
 1. [Introduction](#introduction)
-2. 
+2. [Board Overview](#board_overview)
+3. [Setting Up the Hardware](#setting_up_hardware)
+4. [Prepare the Development Environment](#prepare_dev_env)
+5. [Download the S1D13C00 Software from Epson](#epson_sw)
+6. [Importing the Examples](#import_examples)
 
 <img src = "./docs/FrontCover.JPG">
 
@@ -34,7 +36,7 @@ The LS021B7DD02 64-Color Memory LCD Evaluation Kit is a evaluation platform main
    
      <img src = "./docs/Epson_S1D13C00.JPG" width = 50%>
 
-## Board Overview
+## Board Overview <a name="board_overview"></a>
 
 <img src = "./docs/BoardOverview.jpg">
 
@@ -52,7 +54,7 @@ The LS021B7DD02 64-Color Memory LCD Evaluation Kit is a evaluation platform main
 12. P1 on EK-TM4C1294XL-Bridge to mate with P102 on LS021B7DD02 board
 13. Texas Instruments Tiva:tm: C Series TM4C1294 LaunchPad Evaluation Kit
 
-## Setting up the Hardware
+## Setting Up the Hardware <a name="setting_up_hardware"></a>
 
 Install the LCD
 
@@ -72,7 +74,7 @@ Connect USB cable
 
 
 
-## Prepare the Development Environment
+## Prepare the Development Environment <a name="prepare_dev_env"></a>
 
 Download and install Code Composer Studio (CCS) from this web site:
 
@@ -122,7 +124,7 @@ Launch CCS with a workspace project created at your own convenience. In my case,
 
 
 
-## Download the S1D13C00 Software from Epson
+## Download the S1D13C00 Software from Epson <a name="epson_sw"></a>
 
 Software package containing the driver source code and demo projects of the S1D13C00 Memory Display Controller is available from this web site:
 
@@ -144,7 +146,7 @@ Now you have everything to develop an application for LS021B7DD0x + S1D13C00.
 
 <img src = "./docs/S1D13C00_folder_structure.png">
 
-## Importing the Examples
+## Importing the Examples <a name="import_examples"></a>
 
 Follow the procedures below to import and run the first project on LS021B7DD02 64-Color Memory LCD Evaluation Kit.
 
