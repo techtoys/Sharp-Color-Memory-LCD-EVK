@@ -1,12 +1,14 @@
 # LS021B7DD02 64-Color Memory LCD Evaluation Kit
 
-1. [ Introduction ] (#intro)
+# Table of contents
+
+1. [Introduction](#introduction)
 2. 
 
 <img src = "./docs/FrontCover.JPG">
 
 
- ## Introduction
+ ## Introduction <a name="introduction"></a>
 
 The LS021B7DD02 64-Color Memory LCD Evaluation Kit is a evaluation platform mainly for two components:
 
@@ -34,7 +36,7 @@ The LS021B7DD02 64-Color Memory LCD Evaluation Kit is a evaluation platform main
 
 ## Board Overview
 
-<img src = "./docs/BoardOverview.JPG">
+<img src = "./docs/BoardOverview.jpg">
 
 1. Molex connector 5035662102 to mate with LS021B7DD02
 2. R132 (100R, 0.1%), R133 (100R, 0.1%), and R122(10R, 0.1%) with test points for VDD1 of LS021B7DD02, VDD2 of LS021B7DD02, and VDD of S1D13C00. Please read schematic in this repository.
