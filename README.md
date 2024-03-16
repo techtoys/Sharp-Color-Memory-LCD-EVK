@@ -279,7 +279,7 @@ Procedures described below demonstrate how to update the Serial Flash content wi
 
 <img src = "./docs/MDCImgConv_new_mdcimg.png" width=80%>
 
-Launch `MDCSerFlashImg.exe` from `C:\EPSON\S1D13C00_SW\Tools`. Add all 13 images (img01.mdcimg - img13.mdcimg) to the dialog box. Don't forget to include the original files img01.mdcimg - img10.mdcimg unless you want to remove any of them. In this example, we are adding three images to the list and keep the original 10 images.
+Launch `MDCSerFlashImg.exe` from `C:\EPSON\S1D13C00_SW\Tools`. Add all 13 images (img01.mdcimg - img13.mdcimg) to the dialog box. Don't forget to include the original files img01.mdcimg - img10.mdcimg unless you want to remove any one of them. In this example, we are adding three images to the list and keep the original 10 images.
 
 <img src = "./docs/MDCSerFlashImg.png">
 
@@ -345,9 +345,9 @@ You will see the first image to display on LCD.
 
 2. modify `uint32_t picslib[10]` > `uint32_t picslib[13]` to include an array of 13 images,
 
-3. modify the function `void Button1Handler(void)` from `++pic==10` to `++pic==13` to enable image scrolling up to index 12 with the push button SW1
+3. modify the function `void Button1Handler(void)` from `++pic==10` to `++pic==13` to enable image scrolling up to index 12 with the push button SW1,
 
-4. add the following code to include new image addresses
+4. add the following code to include new image addresses.
 
    ```C
      picslib[10] = img11_PXDATA_ADDR;
@@ -355,7 +355,7 @@ You will see the first image to display on LCD.
      picslib[12] = img13_PXDATA_ADDR;
    ```
 
-   A screen capture of `main.c` is shown below for a better illustration.
+   The screen capture of `main.c` is shown below for a better illustration.
 
 <img src = "./docs/demo2_changes_4_13images.png">
 
