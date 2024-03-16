@@ -6,8 +6,9 @@
 4. [Preparing Development Environment](#prepare_dev_env)
 5. [Download S1D13C00 Software from Epson](#epson_sw)
 6. [Importing the Examples](#import_examples)
-7. [Sending New Binary Files to Serial Flash](#bin_files_update)
-8. [Power Consumption and its Measurement ](#power_consumption)
+7. [Prepare Binary Files for New Images](#new_images)
+8. [Sending Binary Files to Serial Flash](#bin_files_update)
+9. [Power Consumption and its Measurement ](#power_consumption)
 
 <img src = "./docs/FrontCover.jpg">
 
@@ -234,13 +235,13 @@ Backlight is also available with an ON/OFF switch S100.
 
 <img src = "./docs/Importing_all_examples.png">
 
-## Sending New Binary Files to Serial Flash <a name="bin_files_update"></a>
+## Prepare Binary Files for New Images <a name="new_images"></a>
 
 There are two methods to preload some images to the system:
 
-1. in binary format to the external Serial Flash
+1. in an external Serial Flash (Winbond 25Q128JVSQ 128Mbit Serial Flash onboard)
 
-2. in .h array to Flash space of the host CPU
+2. in Flash space of the host CPU in *.h format
 
 Method 1 is preferred because it saves precious programming space of the CPU.
 
@@ -252,9 +253,9 @@ Image sources are available from the `\source_images` folder.
 
 <img src = "./docs/Binary_file_loc.png">
 
-Epson has released [three tools](https://vdc.epson.com/display-controllers/s1d13c00-peripheral-circuit-sample-software-manual/viewdocument/611) to convert fonts and images to format compatible with S1D13C00.
+Epson has released [three tools](https://vdc.epson.com/display-controllers/s1d13c00-peripheral-circuit-sample-software-manual/viewdocument/611) to convert fonts and images to formats compatible with S1D13C00.
 
-Features of the tools are summarised below:
+Features of the tools are summarised as folllows:
 
 | Tool                            | Features                                                     |      |
 | ------------------------------- | ------------------------------------------------------------ | ---- |
@@ -262,17 +263,53 @@ Features of the tools are summarised below:
 | MDCImgConv.exe                  | Convert common image formats (BMP, PNG, JPG, ICO, TIF, GIF) to pixel formats supported by S1D13C00. The tool can generate header files (.h), binary files (.mdcimg) or HEX files (.hex). |      |
 | MDCSerFlashImg.exe              | Create a binary image for downloading to the serial flash W25Q128JVSIQTR |      |
 
-Procedures below show you how to send a new binary file to the Serial Flash with [Tera Term](https://github.com/TeraTermProject/teraterm/releases). 
+Procedures described below demonstrate how to update the Serial Flash content with new images.
+
+**Step 1:** Copy new images to `C:\EPSON\S1D13C00_SW\Examples\demo2_LS021B7DD01\source_images` for easier project management. You may find the new images from folder at [link](https://github.com/techtoys/Sharp-Color-Memory-LCD-EVK/tree/main/docs).
+
+<img src = "./docs/New_images.png" width=70%>
+
+**Step 2:** Launch `MDCImgConv.exe` from `C:\EPSON\S1D13C00_SW\Tools`. Open each of the images (img11-13.png) from the path in step 1. Click the **Export image** button to convert to *.mdcimg format for each of the images.
+
+<img src = "./docs/MDCImgConv.png" width=70%>
+
+<img src = "./docs/MDCImgConv_2_mdcimg.png">
+
+**Step 3:** After conversions, you will get three new files in .mdcimg format. 
+
+<img src = "./docs/MDCImgConv_new_mdcimg.png" width=80%>
+
+Launch `MDCSerFlashImg.exe` from `C:\EPSON\S1D13C00_SW\Tools`. Add all 13 images (img01.mdcimg - img13.mdcimg) to the dialog box. Don't forget to include the original files img01.mdcimg - img10.mdcimg unless you want to remove any of them. In this example, we are adding three images to the list and keep the original 10 images.
+
+<img src = "./docs/MDCSerFlashImg.png">
+
+Not to overwrite the original binary file, we may choose a new filename as `demo2_serflash_new`.
+
+Click **Save**.
+
+<img src = "./docs/MDCSerFlashImgSave.png">
+
+By inspecting the folder content, we will see that two files have been created: `demo2_serflash_new.bin` and `demo2_serflash_new.h`.
+
+The binary file is the file to send to Serial Flash and the .h header file contains the address information.
+
+<img src = "./docs/MDCSerFlashImgCompare_new_n_old.png">
+
+Now, we are ready to send the new binary file to Serial Flash.
+
+## Sending Binary Files to Serial Flash <a name="bin_files_update"></a>
+
+Send a new binary file to the Serial Flash with [Tera Term](https://github.com/TeraTermProject/teraterm/releases). 
 
 **Step 1:** Launch Tera Term, select the new COM Port enumerated by TM4C1294 LaunchPad. Click **OK**.
 
 <img src = "./docs/Teraterm_new_connection.png">
 
-**Step 2:** From **Setup > Serial Port > set Speed to 115200 > click New setting**.
+**Step 2:** From **Setup** > **Serial Port** > set **Speed to 115200** > click **New setting**.
 
 <img src = "./docs/Teraterm_serial_speed.png">
 
-**Step 3:** Click the reset button on TM4C1294-EK board, you will see a short manual from Tera Term. Type Z from keyboard to erase the Serial Flash. 
+**Step 3:** By clicking the reset button on TM4C1294-EK board, you will see a short manual on Tera Term. Type Z from the keyboard to erase the Serial Flash. 
 
 <img src = "./docs/Teraterm_Z_to_erase.png">
 
@@ -280,7 +317,7 @@ Procedures below show you how to send a new binary file to the Serial Flash with
 
 <img src = "./docs/Teraterm_Z_erase_complete.png">
 
-**Step 5:** From **File > Transfer > XMODEM > Send**, browse to the binary file (C:\EPSON\S1D13C00_SW\Examples\demo2_LS021B7DD01\source_images\demo2_serflash.bin) to download. 
+**Step 5:** From **File > Transfer > XMODEM > Send**, browse to the binary file `C:\EPSON\S1D13C00_SW\Examples\demo2_LS021B7DD01\source_images\demo2_serflash_new.bin` to download.
 
 <img src = "./docs/Teraterm_Z_to_send_xmodem.png">
 
@@ -290,7 +327,7 @@ The progress of Xmodem transfer is shown.
 
 <img src = "./docs/Teraterm_Z_xmodem_progress.png">
 
-Wait until it finishes. Be patient! It takes time.
+Wait until it finishes. Be patient, It takes time!
 
 <img src = "./docs/Teraterm_xmodem_finish.png">
 
@@ -298,7 +335,35 @@ Wait until it finishes. Be patient! It takes time.
 
 <img src = "./docs/SW1_switch.jpg" width=70%>
 
-<img src = "./docs/demo2.jpg">
+You will see the first image to display on LCD.
+
+<img src = "./docs/demo2.jpg" width=70%>
+
+**Step 7:** There remains the final step to *let the microcontroller know* that, there are three new images in the Serial Flash. There are 4 places in the source code to change:
+
+1. in `main.c`, change `#include "demo2_serflash.h`" > `#include "demo2_serflash_new.h"` to include the new address map,
+
+2. modify `uint32_t picslib[10]` > `uint32_t picslib[13]` to include an array of 13 images,
+
+3. modify the function `void Button1Handler(void)` from `++pic==10` to `++pic==13` to enable image scrolling up to index 12 with the push button SW1
+
+4. add the following code to include new image addresses
+
+   ```C
+     picslib[10] = img11_PXDATA_ADDR;
+     picslib[11] = img12_PXDATA_ADDR;
+     picslib[12] = img13_PXDATA_ADDR;
+   ```
+
+   A screen capture of `main.c` is shown below for a better illustration.
+
+<img src = "./docs/demo2_changes_4_13images.png">
+
+Reprogram the board and click **reset**. Keep clicking **SW1** to browse to the new images.
+
+<img src = "./docs/img11_on_LCD.jpg" width=70%>
+
+<img src = "./docs/img13_on_LCD.jpg" width=70%>
 
 ## Power Consumption and its Measurement <a name="power_consumption"></a>
 
