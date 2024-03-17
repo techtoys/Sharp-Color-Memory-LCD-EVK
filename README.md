@@ -335,7 +335,7 @@ Wait until it finishes. Be patient, It takes time!
 
 <img src = "./docs/SW1_switch.jpg" width=70%>
 
-You will see the first image to display on LCD.
+You will see the first image on LCD on reset.
 
 <img src = "./docs/demo2.jpg" width=70%>
 
