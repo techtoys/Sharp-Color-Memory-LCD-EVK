@@ -9,6 +9,7 @@
 7. [Prepare Binary Files for New Images](#new_images)
 8. [Sending Binary Files to Serial Flash](#bin_files_update)
 9. [Power Consumption and its Measurement ](#power_consumption)
+10. [YouTube Video](#youtube)
 
 <img src = "./docs/FrontCover.jpg">
 
@@ -375,7 +376,6 @@ Test points are available for voltage drop measurements.
 
 <img src = "./docs/TestPoints.jpg" width=50%>
 
-Results of measuring voltage drop across VDD1 and VDD2 current path with 100 Ohm resistors are shown below. The voltage drop is not measurable with my multimeter!
+## YouTube Video <a name="youtube"></a>
 
-<img src = "./docs/VDD1_2_results.jpg" width=50%>
-
+<a href = "https://youtu.be/-nZKyYxobqU"><img src = "./docs/youtube.png"></a>
