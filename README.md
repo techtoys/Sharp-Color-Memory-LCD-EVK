@@ -362,9 +362,9 @@ You will see the first image on LCD on reset.
 
 Reprogram the board and click **reset**. Keep clicking **SW1** to browse to the new images.
 
-<img src = "./docs/img11_on_LCD.jpg" width=70%>
+<img src = "./docs/img11_on_LCD.jpg" width=50%>
 
-<img src = "./docs/img13_on_LCD.jpg" width=70%>
+<img src = "./docs/img13_on_LCD.jpg" width=50%>
 
 ## Power Consumption and its Measurement <a name="power_consumption"></a>
 
