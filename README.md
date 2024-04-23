@@ -376,6 +376,6 @@ Test points are available for voltage drop measurements.
 
 <img src = "./docs/TestPoints.jpg" width=50%>
 
-## YouTube Video <a name="youtube"></a>
+## YouTube Video ​<a name="youtube"></a>
 
 <a href = "https://youtu.be/-nZKyYxobqU"><img src = "./docs/YouTube.png"></a>
